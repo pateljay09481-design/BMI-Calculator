@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Health Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">♥</div>
+            <div>
+                <h2>BMI Calculator</h2>
+                <p>Healthy You · Better Tomorrow</p>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#home" class="nav-link active">⌂ &nbsp; Home</a>
+            <a href="#history" class="nav-link" id="history-link">◷ &nbsp; History</a>
+            <a href="#about" class="nav-link">ⓘ &nbsp; About BMI</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="person-icon">♧</div>
+            <h3>A healthier you</h3>
+            <p>is a happier you!</p>
+            <div class="heart">♥</div>
+        </div>
+    </aside>
+
+    <main class="main-content" id="home">
+        <header class="page-header">
+            <div>
+                <h1>BMI Calculator</h1>
+                <p>Calculate your Body Mass Index and understand your result.</p>
+            </div>
+            <div class="profile-icon">●</div>
+        </header>
+
+        <section class="stats-grid">
+            <article class="stat-card blue">
+                <div class="stat-icon">♙</div>
+                <p>Your BMI</p>
+                <h2 id="summary-bmi">--</h2>
+                <span id="summary-status">Enter your details</span>
+            </article>
+
+            <article class="stat-card green">
+                <div class="stat-icon">♥</div>
+                <p>Health Category</p>
+                <h2 id="summary-category">--</h2>
+                <span>Based on adult BMI ranges</span>
+            </article>
+
+            <article class="stat-card purple">
+                <div class="stat-icon">◉</div>
+                <p>Normal BMI Range</p>
+                <h2>18.5 – 24.9</h2>
+                <span>For adults</span>
+            </article>
+
+            <article class="stat-card pink">
+                <div class="stat-icon">◎</div>
+                <p>Your Goal</p>
+                <h2 id="goal-text">Stay Healthy</h2>
+                <span>Build healthy habits</span>
+            </article>
+        </section>
+
+        <section class="dashboard-grid">
+            <article class="panel input-panel">
+                <h2>♙ &nbsp; Enter Your Details</h2>
+                <p class="muted">Provide your height and weight to calculate BMI.</p>
+
+                <form id="bmi-form">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" min="50" max="250"
+                           step="0.1" placeholder="e.g. 170" required>
+
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" min="10" max="500"
+                           step="0.1" placeholder="e.g. 65" required>
+
+                    <button type="submit" id="calculate-button">
+                        ▦ &nbsp; Calculate BMI
+                    </button>
+                    <p id="error-message" class="error" role="alert"></p>
+                </form>
+
+                <p class="privacy-note">ⓘ &nbsp; Your inputs are not saved by this app.</p>
+            </article>
+
+            <article class="panel result-panel">
+                <h2>🏆 &nbsp; Your Result</h2>
+
+                <div class="gauge" id="gauge">
+                    <div class="gauge-inner">
+                        <strong id="bmi-value">--</strong>
+                        <span>BMI</span>
+                    </div>
+                </div>
+
+                <div class="result-status" id="result-status">
+                    <h3 id="result-category">Awaiting calculation</h3>
+                    <p id="result-advice">Enter your details and select Calculate BMI.</p>
+                </div>
+
+                <div class="mini-stats">
+                    <div><span>⚖</span><small>Weight</small><strong id="result-weight">-- kg</strong></div>
+                    <div><span>↕</span><small>Height</small><strong id="result-height">-- cm</strong></div>
+                    <div><span>▦</span><small>BMI</small><strong id="mini-bmi">--</strong></div>
+                    <div><span>♥</span><small>Category</small><strong id="mini-category">--</strong></div>
+                </div>
+            </article>
+
+            <div class="right-column">
+                <article class="panel category-panel">
+                    <h2>📊 &nbsp; BMI Categories</h2>
+
+                    <div class="category-row">
+                        <span class="dot blue-dot"></span>
+                        <span>Underweight</span><span class="range">&lt; 18.5</span>
+                    </div>
+                    <div class="category-row">
+                        <span class="dot green-dot"></span>
+                        <span>Normal weight</span><span class="range">18.5–24.9</span>
+                    </div>
+                    <div class="category-row">
+                        <span class="dot orange-dot"></span>
+                        <span>Overweight</span><span class="range">25–29.9</span>
+                    </div>
+                    <div class="category-row">
+                        <span class="dot red-dot"></span>
+                        <span>Obesity</span><span class="range">≥ 30</span>
+                    </div>
+                </article>
+
+                <article class="panel fact-panel" id="about">
+                    <h2>💡 &nbsp; Did You Know?</h2>
+                    <p>BMI is a screening tool based on height and weight. It does not directly measure body fat or diagnose a health condition.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="wellness-banner">
+            <div class="sun-art">☀</div>
+            <div class="wellness-copy">
+                <h2>Small Steps. Big Changes.</h2>
+                <p>Balanced meals, regular physical activity, and good sleep can support your wellbeing.</p>
+            </div>
+            <div class="wellness-item"><span>🍎</span><strong>Eat Healthy</strong></div>
+            <div class="wellness-item"><span>🏃</span><strong>Stay Active</strong></div>
+            <div class="wellness-item"><span>🌙</span><strong>Sleep Well</strong></div>
+        </section>
+
+        <section class="panel history-panel" id="history">
+            <h2>Recent Calculations</h2>
+            <p class="muted">Calculations are kept only in this browser session and are cleared when you reload the page.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>BMI</th><th>Height</th><th>Weight</th><th>Category</th></tr></thead>
+                    <tbody id="history-body">
+                        <tr><td colspan="4">No calculations yet.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer> BMI Health Dashboard · Educational use · Adult BMI categories </footer>
+    </main>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
